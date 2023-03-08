@@ -21,7 +21,6 @@ Organizzare i singoli membri in card/schede
 
 // PSEUDO CODICE
 /*
-
 MILESTONE 0:
 - creo i 6 oggetti contenenti ciascuno le informazioni forniteci
 - creo un array contenente i 6 oggetti creati
@@ -40,6 +39,9 @@ BONUS 1
 - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
 - creo una funzione che adempia allo scopo sopracitato
 - richiamo la funzione
+
+BONUS 2
+- devo creare nel Dom una scheda, contenente le informazioi del singolo lavoratore, per ogni worker
 */
 
 // SVOLGIMENTO
@@ -86,6 +88,15 @@ let containerElement = document.getElementById('container');
 // - richiamo l'elemento dal Dom in cui appenderò le immagini dei singoli worker
 let containerImagesElement = document.getElementById('container-images');
 
+// - richiamo l'elemento dal Dom in cui appenderò le card dei singoli worker
+let containerCardElement = document.getElementById('container-card');
+
+// - modifico lo stile del container in cui appenderò le cards
+containerCardElement.style.display = 'flex';
+containerCardElement.style.flexWrap = 'wrap';
+containerCardElement.style.width = '90%';
+containerCardElement.style.gap = '20px';
+
 
 // MILESTONE 1 ----------------
 // - stampo in console le informazioni singole contenute all'interno di ogni oggetto
@@ -97,15 +108,13 @@ printWorker(workers);
 // - richiamo la funzione che adempie allo scopo sopracitato
 printDomWorker(workers, containerElement);
 
-
-// BONUS 1
-
+// BONUS 1 -----------------
 // - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
 // - richiamo la funzione generatrice di immagini 
 printImageWorker(workers, containerImagesElement);
 
-
-
+// BONUS 2 ----------------
+creatorCard(workers, containerCardElement);
 
 
 
@@ -113,6 +122,7 @@ printImageWorker(workers, containerImagesElement);
 
 // FUNCTIONS -----------------
 
+// FUNCTION MILESTONE 1
 // - stampo in console le informazioni singole contenute all'interno di ogni oggetto
 function printWorker (array) {
 
@@ -126,6 +136,7 @@ function printWorker (array) {
     }
 }
 
+// FUNCTION MILESTONE 2
 // - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
 function printDomWorker (array, domElement) {
 
@@ -137,6 +148,7 @@ function printDomWorker (array, domElement) {
     }
 }
 
+// FUNCTION BONUS 1
 // - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
 // - creo una funzione che adempia allo scopo sopracitato
 function printImageWorker(array, container) {
@@ -149,4 +161,60 @@ function printImageWorker(array, container) {
         imageWorker.style.width = '100px';
         container.append(imageWorker);
     }
+}
+
+// FUNCTION BONUS 2
+
+// - creo una funzione generatrice di card in cui inserirò le proprietà dei workers
+function creatorCard (array, containerCard) {
+
+    // - creo un ciclo che mi generi x card, dove x è pari alla lunghezza dell'array workers
+    for (i = 0; i < array.length; i++) {
+
+        let cardElement = document.createElement('div');
+        cardElement.style.width = 'calc(100% / 3 - (20px / 4 * 3))';
+        cardElement.style.minHeight = '200px';
+        cardElement.style.display = 'flex';
+        cardElement.style.flexDirection = 'column';
+        cardElement.style.alignItems = 'center';
+        cardElement.style.backgroundColor = 'white';
+        containerCard.append(cardElement);
+
+        creatorCardPhoto (array,cardElement);
+    }
+}
+
+// - creo una funzione che genera un immagine che inserirò nella card
+function creatorCardPhoto (array, containerCardInner) {
+    
+    let cardImageElement = document.createElement('img');
+    cardImageElement.src = '/img/' + array[i].photo;
+    cardImageElement.style.width = '100%';
+    cardImageElement.style.display = 'block';
+    cardImageElement.classList.add('card-inside');
+    containerCardInner.append(cardImageElement);
+
+    createCardName (array, i, containerCardInner);
+    createCardPosition (array, i, containerCardInner);
+
+}
+
+// - creo una funzione che genera un titolo in cui è indicato il nome del worker che inserirò nella card
+function createCardName (arrayName, indexName, containerCardName) {
+
+    let cardNameElement = document.createElement('div');
+    cardNameElement.innerHTML = arrayName[indexName].name;
+    cardNameElement.style.fontWeight = '600'
+    cardNameElement.style.fontSize = '1.1em';
+    cardNameElement.classList.add('card-inside');
+    containerCardName.append(cardNameElement);
+}
+
+// - creo una funzione che genera un titolo in cui è indicato il ruolo del worker che inserirò nella card
+function createCardPosition (arrayPosition, indexPosition, containerCardPosition) {
+
+    let cardPositionElement = document.createElement('div');
+    cardPositionElement.innerHTML = arrayPosition[indexPosition].position;
+    cardPositionElement.classList.add('card-inside');
+    containerCardPosition.append(cardPositionElement);
 }

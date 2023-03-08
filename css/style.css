@@ -5,3 +5,17 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+#big-container {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #d5d5d5;
+}
+
+#container-card {
+    margin: 0 auto;
+}
+
+.card-inside {
+    padding-bottom: 0.7em;
+}

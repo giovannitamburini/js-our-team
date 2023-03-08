@@ -28,11 +28,18 @@ MILESTONE 0:
 
 MILESTONE 1:
 - stampo in console le informazioni singole contenute all'interno di ogni oggetto (creo una funzione adempia a tale scopo)
-- richiamo la funzione che adempie allo scopo sopracitato
+- creo una funzione che adempia allo scopo sopracitato
+- richiamo la funzione
 
 MILESTONE 2
 - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
-- richiamo la funzione che adempie allo scopo sopracitato
+- creo una funzione che adempia allo scopo sopracitato
+- richiamo la funzione
+
+BONUS 1
+- devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
+- creo una funzione che adempia allo scopo sopracitato
+- richiamo la funzione
 */
 
 // SVOLGIMENTO
@@ -73,8 +80,11 @@ let worker6 = {
 // - creo un array contenente i 6 oggetti creati
 let workers = [ worker1, worker2, worker3, worker4, worker5, worker6 ];
 
-// - richiamo gli elementi del Dom in cui appenderò i dati dei singoli worker
+// - richiamo l'elemento dal Dom in cui appenderò i dati dei singoli worker
 let containerElement = document.getElementById('container');
+
+// - richiamo l'elemento dal Dom in cui appenderò le immagini dei singoli worker
+let containerImagesElement = document.getElementById('container-images');
 
 
 // MILESTONE 1 ----------------
@@ -87,6 +97,12 @@ printWorker(workers);
 // - richiamo la funzione che adempie allo scopo sopracitato
 printDomWorker(workers, containerElement);
 
+
+// BONUS 1
+
+// - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
+// - richiamo la funzione generatrice di immagini 
+printImageWorker(workers, containerImagesElement);
 
 
 
@@ -116,7 +132,21 @@ function printDomWorker (array, domElement) {
     for (i = 0; i < array.length; i++) {
 
         let newElement = document.createElement('div');
-        newElement.innerHTML ='NAME: ' + array[i].name + ', POSITION: ' + array[i].position + ', PHOTO: ' + array[i].photo;
+        newElement.innerHTML = 'WORKER' + (i + 1) + ':' + ' NAME: ' + array[i].name + ', POSITION: ' + array[i].position + ', PHOTO: ' + array[i].photo;
         domElement.append(newElement);
+    }
+}
+
+// - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
+// - creo una funzione che adempia allo scopo sopracitato
+function printImageWorker(array, container) {
+
+    for (i = 0; i < array.length; i++) {
+
+        let imageWorker = document.createElement('img');
+        imageWorker.src = '/img/' + array[i].photo;
+        imageWorker.style.display = 'block';
+        imageWorker.style.width = '100px';
+        container.append(imageWorker);
     }
 }

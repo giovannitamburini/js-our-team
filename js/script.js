@@ -26,7 +26,7 @@ MILESTONE 0:
 - creo un array contenente i 6 oggetti creati
 
 MILESTONE 1:
-- stampo in console le informazioni
+- stampo in console le informazioni singole contenute all'interno di ogni oggetto
 
 */
 
@@ -67,3 +67,40 @@ let worker6 = {
 
 // - creo un array contenente i 6 oggetti creati
 let workers = [ worker1, worker2, worker3, worker4, worker5, worker6 ];
+
+// MILESTONE 1 ----------------
+
+// - stampo in console le informazioni singole contenute all'interno di ogni oggetto
+// - richiamo la funzione che ha lo scopo sopracitato
+printWorker(workers);
+
+// MILESTONE 2 ----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTIONS -----------------
+
+// - stampo in console le informazioni singole contenute all'interno di ogni oggetto
+function printWorker (array) {
+
+    for (i = 0; i < array.length; i++) {
+
+        console.log('WORKER ' + (i + 1) + '---------');
+
+        console.log(array[i].name);
+        console.log(array[i].position);
+        console.log(array[i].photo)
+    }
+}

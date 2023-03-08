@@ -67,5 +67,3 @@ let worker6 = {
 
 // - creo un array contenente i 6 oggetti creati
 let workers = [ worker1, worker2, worker3, worker4, worker5, worker6 ];
-
-// MILESTONE 1 ----------------

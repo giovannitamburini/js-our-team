@@ -16,6 +16,7 @@ Trasformare la stringa foto in una immagine effettiva
 
 BONUS 2:
 Organizzare i singoli membri in card/schede
+-----------------------------------------------------------------
 */
 
 // PSEUDO CODICE
@@ -26,8 +27,12 @@ MILESTONE 0:
 - creo un array contenente i 6 oggetti creati
 
 MILESTONE 1:
-- stampo in console le informazioni singole contenute all'interno di ogni oggetto
+- stampo in console le informazioni singole contenute all'interno di ogni oggetto (creo una funzione adempia a tale scopo)
+- richiamo la funzione che adempie allo scopo sopracitato
 
+MILESTONE 2
+- stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
+- richiamo la funzione che adempie allo scopo sopracitato
 */
 
 // SVOLGIMENTO
@@ -68,19 +73,19 @@ let worker6 = {
 // - creo un array contenente i 6 oggetti creati
 let workers = [ worker1, worker2, worker3, worker4, worker5, worker6 ];
 
-// MILESTONE 1 ----------------
+// - richiamo gli elementi del Dom in cui appenderò i dati dei singoli worker
+let containerElement = document.getElementById('container');
 
+
+// MILESTONE 1 ----------------
 // - stampo in console le informazioni singole contenute all'interno di ogni oggetto
-// - richiamo la funzione che ha lo scopo sopracitato
+// - richiamo la funzione che adempie allo scopo sopracitato
 printWorker(workers);
 
 // MILESTONE 2 ----------------
-
-
-
-
-
-
+// - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
+// - richiamo la funzione che adempie allo scopo sopracitato
+printDomWorker(workers, containerElement);
 
 
 
@@ -97,10 +102,21 @@ function printWorker (array) {
 
     for (i = 0; i < array.length; i++) {
 
-        console.log('WORKER ' + (i + 1) + '---------');
+        console.log('WORKER ' + (i + 1) + '--------');
 
         console.log(array[i].name);
         console.log(array[i].position);
         console.log(array[i].photo)
+    }
+}
+
+// - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
+function printDomWorker (array, domElement) {
+
+    for (i = 0; i < array.length; i++) {
+
+        let newElement = document.createElement('div');
+        newElement.innerHTML ='NAME: ' + array[i].name + ', POSITION: ' + array[i].position + ', PHOTO: ' + array[i].photo;
+        domElement.append(newElement);
     }
 }

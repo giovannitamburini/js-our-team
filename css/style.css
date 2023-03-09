@@ -10,6 +10,11 @@
     width: 100%;
     padding: 20px 0;
     background-color: #d5d5d5;
+    text-align: center;
+}
+
+#big-container p {
+    padding: 2em;
 }
 
 #container-card {

@@ -94,7 +94,7 @@ let containerCardElement = document.getElementById('container-card');
 // - modifico lo stile del container in cui appenderò le cards
 containerCardElement.style.display = 'flex';
 containerCardElement.style.flexWrap = 'wrap';
-containerCardElement.style.width = '90%';
+containerCardElement.style.width = '70%';
 containerCardElement.style.gap = '20px';
 
 
@@ -178,6 +178,8 @@ function creatorCard (array, containerCard) {
         cardElement.style.flexDirection = 'column';
         cardElement.style.alignItems = 'center';
         cardElement.style.backgroundColor = 'white';
+        cardElement.style.borderRadius = '20px';
+        cardElement.style.boxShadow = '10px 10px 10px grey';
         containerCard.append(cardElement);
 
         creatorCardPhoto (array,cardElement);
@@ -191,6 +193,7 @@ function creatorCardPhoto (array, containerCardInner) {
     cardImageElement.src = '/img/' + array[i].photo;
     cardImageElement.style.width = '100%';
     cardImageElement.style.display = 'block';
+    cardImageElement.style.borderRadius = '20px 20px 0 0';
     cardImageElement.classList.add('card-inside');
     containerCardInner.append(cardImageElement);
 

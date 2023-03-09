@@ -197,12 +197,15 @@ function creatorCardPhoto (array, containerCardInner) {
     cardImageElement.classList.add('card-inside');
     containerCardInner.append(cardImageElement);
 
+    // - richiamo la funzione che genera il nome da attrabuire alla singola cella
     createCardName (array, i, containerCardInner);
+    
+    // - richiamo la funzione che genera il ruolo da attribuire alla singola cella
     createCardPosition (array, i, containerCardInner);
 
 }
 
-// - creo una funzione che genera un titolo in cui è indicato il nome del worker che inserirò nella card
+// - creo una funzione che genera un div in cui è indicato il nome del worker che inserirò nella card
 function createCardName (arrayName, indexName, containerCardName) {
 
     let cardNameElement = document.createElement('div');
@@ -213,7 +216,7 @@ function createCardName (arrayName, indexName, containerCardName) {
     containerCardName.append(cardNameElement);
 }
 
-// - creo una funzione che genera un titolo in cui è indicato il ruolo del worker che inserirò nella card
+// - creo una funzione che genera un div in cui è indicato il ruolo del worker che inserirò nella card
 function createCardPosition (arrayPosition, indexPosition, containerCardPosition) {
 
     let cardPositionElement = document.createElement('div');

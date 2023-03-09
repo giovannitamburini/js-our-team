@@ -101,12 +101,36 @@ containerCardElement.style.gap = '20px';
 // MILESTONE 1 ----------------
 // - stampo in console le informazioni singole contenute all'interno di ogni oggetto
 // - richiamo la funzione che adempie allo scopo sopracitato
-printWorker(workers);
+// printWorker(workers);
+
+for(let i = 0; i < workers.length; i++) {
+
+    let membroCorrente = workers [i];
+
+    for(let chiaveDelMembroCorrente in membroCorrente) {
+
+        console.log(chiaveDelMembroCorrente);
+
+        console.log(membroCorrente[chiaveDelMembroCorrente])
+    }
+}
 
 // MILESTONE 2 ----------------
 // - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
 // - richiamo la funzione che adempie allo scopo sopracitato
-printDomWorker(workers, containerElement);
+// printDomWorker(workers, containerElement);
+
+for(let i = 0; i < workers.length; i++) {
+
+    let membroCorrente = workers [i];
+
+    for(let chiaveDelMembroCorrente in membroCorrente) {
+
+        let newElement = document.createElement('div');
+        newElement.innerHTML = chiaveDelMembroCorrente + ': ' + membroCorrente[chiaveDelMembroCorrente];
+        containerElement.append(newElement);
+    }
+}
 
 // BONUS 1 -----------------
 // - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
@@ -117,38 +141,35 @@ printImageWorker(workers, containerImagesElement);
 creatorCard(workers, containerCardElement);
 
 
-
-
-
 // FUNCTIONS -----------------
 
-// FUNCTION MILESTONE 1
+// FUNCTION MILESTONE 1 -------------
 // - stampo in console le informazioni singole contenute all'interno di ogni oggetto
-function printWorker (array) {
+// function printWorker (array) {
 
-    for (i = 0; i < array.length; i++) {
+//     for (i = 0; i < array.length; i++) {
 
-        console.log('WORKER ' + (i + 1) + '--------');
+//         console.log('WORKER ' + (i + 1) + '--------');
 
-        console.log(array[i].name);
-        console.log(array[i].position);
-        console.log(array[i].photo)
-    }
-}
+//         console.log(array[i].name);
+//         console.log(array[i].position);
+//         console.log(array[i].photo)
+//     }
+// }
 
-// FUNCTION MILESTONE 2
+// FUNCTION MILESTONE 2 -----------
 // - stampo nel Dom le informazioni singole contenute all'interno di ogni singolo oggetto
-function printDomWorker (array, domElement) {
+// function printDomWorker (array, domElement) {
 
-    for (i = 0; i < array.length; i++) {
+//     for (i = 0; i < array.length; i++) {
 
-        let newElement = document.createElement('div');
-        newElement.innerHTML = 'WORKER' + (i + 1) + ':' + ' NAME: ' + array[i].name + ', POSITION: ' + array[i].position + ', PHOTO: ' + array[i].photo;
-        domElement.append(newElement);
-    }
-}
+//         let newElement = document.createElement('div');
+//         newElement.innerHTML = 'WORKER' + (i + 1) + ':' + ' NAME: ' + array[i].name + ', POSITION: ' + array[i].position + ', PHOTO: ' + array[i].photo;
+//         domElement.append(newElement);
+//     }
+// }
 
-// FUNCTION BONUS 1
+// FUNCTION BONUS 1 ------------
 // - devo creare nel Dom un immagine per ogni worker, in cui il link dell'immagine coincide con il valore relativo alla key 'photo'
 // - creo una funzione che adempia allo scopo sopracitato
 function printImageWorker(array, container) {
@@ -163,8 +184,7 @@ function printImageWorker(array, container) {
     }
 }
 
-// FUNCTION BONUS 2
-
+// FUNCTION BONUS 2 -----------
 // - creo una funzione generatrice di card in cui inserirò le proprietà dei workers
 function creatorCard (array, containerCard) {
 
@@ -173,7 +193,6 @@ function creatorCard (array, containerCard) {
 
         let cardElement = document.createElement('div');
         cardElement.style.width = 'calc(100% / 3 - (20px / 4 * 3))';
-        cardElement.style.minHeight = '200px';
         cardElement.style.display = 'flex';
         cardElement.style.flexDirection = 'column';
         cardElement.style.alignItems = 'center';
